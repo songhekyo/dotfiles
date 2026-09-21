@@ -1,0 +1,6 @@
+# secrets / cache — jangan pernah di-commit
+*.bak
+*.log
+.env
+**/hosts.yml
+**/lazy-lock.json.bak
