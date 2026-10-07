@@ -476,6 +476,12 @@ do
   -- - sr)'  - [S]urround [R]eplace [)] [']
   require('mini.surround').setup()
 
+  -- Move lines/selections with Alt + hjkl
+  --
+  -- - <M-k>/<M-j> - move line (or visual selection) up/down
+  -- - <M-h>/<M-l> - move visual selection left/right
+  require('mini.move').setup()
+
   -- Simple and easy statusline.
   --  You could remove this setup call if you don't like it,
   --  and try some other statusline plugin
