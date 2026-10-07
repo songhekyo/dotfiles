@@ -737,7 +737,7 @@ do
   ---@type table<string, vim.lsp.Config>
   local servers = {
     -- clangd = {},
-    -- gopls = {},
+    gopls = {}, -- Go
     -- pyright = {},
     -- tsc = {},
     --
@@ -815,6 +815,7 @@ do
   local ensure_installed = vim.tbl_filter(function(name) return not mason_skip[name] end, vim.tbl_keys(servers or {}))
   vim.list_extend(ensure_installed, {
     -- You can add other tools here that you want Mason to install
+    'goimports', -- Go formatter (used by conform)
   })
 
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -843,6 +844,7 @@ do
     -- You can also specify external formatters in here.
     formatters_by_ft = {
       lua = { 'stylua' },
+      go = { 'goimports', 'gofmt' }, -- goimports also organizes imports
       -- rust = { 'rustfmt' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
@@ -960,7 +962,7 @@ do
 
   -- Ensure basic parsers are installed
   local parsers =
-    { 'bash', 'c', 'diff', 'html', 'javascript', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'sql', 'svelte', 'tsx', 'typescript', 'vim', 'vimdoc' }
+    { 'bash', 'c', 'diff', 'go', 'gomod', 'gosum', 'gowork', 'html', 'javascript', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'sql', 'svelte', 'tsx', 'typescript', 'vim', 'vimdoc' }
   require('nvim-treesitter').install(parsers)
 
   ---@param buf integer
